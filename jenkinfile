@@ -1,18 +1,20 @@
 pipeline {
     agent { node { label 'linux-rohit' } }
- parameters {
-        string(name: 'This is rohit speaking to you', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
-}
+    parameters {
+        string(name: 'Name', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
+    }
     stages {
         stage('Hello') {
             steps {
-                echo "Hello ${params.This is rohit speaking to you}"
+                script {
+                    echo "Hello ${params.Name}"
+                }
             }
         }
-            stage('bye') {
-                  steps {
-                  echo "Good bye to all from rohit"
-                }
+        stage('Bye') {
+            steps {
+                echo "Goodbye to all from Rohit"
+            }
         }
     }
 }
