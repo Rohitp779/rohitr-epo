@@ -11,10 +11,5 @@ pipeline {
                 }
             }
         }
-        stage('Bye') {
-            steps {
-                echo "Goodbye to all from Rohit"
-            }
-        }
-    }
+}
 }
