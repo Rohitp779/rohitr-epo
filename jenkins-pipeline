@@ -9,7 +9,7 @@ pipeline {
                 echo "Hello ${params.This is rohit speaking to you}"
             }
         }
-            stage('bye) {
+            stage('bye') {
                   steps {
                   echo 'Good bye to all from rohit'
                 }
