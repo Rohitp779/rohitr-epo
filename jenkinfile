@@ -11,7 +11,7 @@ pipeline {
         }
             stage('bye') {
                   steps {
-                  echo 'Good bye to all from rohit'
+                  echo "Good bye to all from rohit"
                 }
         }
     }
