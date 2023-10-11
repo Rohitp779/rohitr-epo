@@ -22,7 +22,7 @@ pipeline {
         stage('Test') {
             steps { 
             sh 'mvn -version'
-            sh 'cd .'
+            sh 'pwd'
             echo 'Test Successfully'
             }
         }
