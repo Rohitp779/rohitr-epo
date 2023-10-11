@@ -7,8 +7,8 @@ pipeline {
         stage('SCM-checkout') {
             steps { 
             script {
-            sh "rm -rf game-of-life"
-            sh "git clone https://github.com/Dee601/game-of-life game-of-life"
+            sh 'rm -rf game-of-life'
+            sh 'git clone https://github.com/Dee601/game-of-life game-of-life'
                 echo 'SCM-checkout Successfully'
                    }
             }
@@ -16,7 +16,8 @@ pipeline {
         stage('Build') {
             steps {
             script {
-            sh "mvn clean install"
+            dir('/home/ec2-user/workspace/pipeline-new/game-of-life')
+            sh 'mvn clean install'
             echo 'Build Successfully'
             }
         }
