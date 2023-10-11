@@ -32,7 +32,7 @@ pipeline {
         stage('Deploy') {
             steps {
             dir('/home/ec2-user/workspace/pipeline-new/game-of-life/gameoflife-web/target/') {
-            sh 'ls'
+            sh 'cp gameoflife.war /mnt/'
             echo 'Deployment Successful'
             }
         }        
