@@ -5,14 +5,13 @@ pipeline {
     }
     stages {
         stage('Build') {
-            steps {
+            steps { 
             script {
             sh "rm -rf game-of-life"
             sh "git clone https://github.com/Dee601/game-of-life game-of-life"
-            dir("game-of-life")
-            }
                 echo 'Build Successfully'
+                   }
             }
         }                    
-            }
-         }
+    }
+}
