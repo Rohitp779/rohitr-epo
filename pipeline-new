@@ -32,7 +32,7 @@ pipeline {
         stage('Deploy') {
             steps {
             dir('/home/ec2-user/workspace/pipeline-new/game-of-life/gameoflife-web/target/') {
-            sh 'cp gameoflife.war /mnt/'
+            sh 'cp gameoflife.war /mnt/apache-tomcat-9.0.81/webapps/'
             echo 'Deployment Successful'
             }
         }        
