@@ -1,7 +1,7 @@
 pipeline {
     agent { node {label 'linux-rohit'}} 
     parameters {
-        string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Hello Dnyneshwar Sir this is pipeline created my rohit patil?')
+        string(name: 'Hello Dnyneshwar Sir', defaultValue: 'Mr Jenkins', description: 'This pipeline created my rohit patil?')
     }
     stages {
         stage('SCM-checkout') {
