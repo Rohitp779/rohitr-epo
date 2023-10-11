@@ -1,5 +1,5 @@
 pipeline {
-    agent { node { label 'built-in' } }
+    agent { node { label 'linux-rohit' } }
     parameters {
                     string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
     }
@@ -12,7 +12,7 @@ pipeline {
                     cd game-of-life/
                     mvn clean install
                     cd gameoflife-web/target/
-                    cp gameoflife.war /mnt/apache-tomcat-9.0.80/webapps/ '''        
+                    cp gameoflife.war /mnt/ '''        
                 echo 'Build Successfully'
             }
         }
