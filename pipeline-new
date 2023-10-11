@@ -15,10 +15,6 @@ pipeline {
                 echo 'Build Successfully'
             }
         }
-        stage('test') {
-            steps {
-                echo 'xxxx'
-            }
-        }
+       
     }
 }
