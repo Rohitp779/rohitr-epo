@@ -4,14 +4,22 @@ pipeline {
         string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Hello Dnyneshwar Sir this is pipeline created my rohit patil?')
     }
     stages {
-        stage('Build') {
+        stage('SCM-checkout') {
             steps { 
             script {
             sh "rm -rf game-of-life"
             sh "git clone https://github.com/Dee601/game-of-life game-of-life"
-                echo 'Build Successfully'
+                echo 'SCM-checkout Successfully'
                    }
             }
-        }                    
+        }
+        stage('Build') {
+            steps {
+            script {
+            sh "mvn clean install"
+            echo 'Build Successfully'
+            }
+        }
     }
+}
 }
