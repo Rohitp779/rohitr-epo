@@ -21,10 +21,11 @@ pipeline {
         }
         stage('Test') {
             steps { 
-            Dir('/home/ec2-user/workspace/pipeline-new/game-of-life/')
+            dir('/home/ec2-user/workspace/pipeline-new/game-of-life/') {
             sh 'mvn clean install'
             sh 'cd .'
             echo 'Test Successfully'
+            }
             }
         }
        
