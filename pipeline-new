@@ -14,20 +14,20 @@ pipeline {
         }
         stage('Built') {
             steps { 
-            sh 'cd /home/ec2-user/workspace/pipeline-new/game-of-life'
-            sh 'pwd'
-            echo 'Built Successfully'
+            dir('/home/ec2-user/workspace/pipeline-new/game-of-life/') {
+            sh 'mvn clean install'
+            sh 'cd .'
+            echo 'Build Successfully'
+            }
             }
         }
         stage('Test') {
             steps { 
             dir('/home/ec2-user/workspace/pipeline-new/game-of-life/') {
-            sh 'mvn clean install'
-            sh 'cd .'
+            sh 'mvn test'
             echo 'Test Successfully'
             }
             }
         }
-       
     }
 }
