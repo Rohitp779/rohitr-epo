@@ -13,6 +13,7 @@ pipeline {
         }
         stage('Built') {
             steps { 
+            sh 'rm -rf game-of-life'
             sh 'cd /home/ec2-user/workspace/pipeline-new/game-of-life'
             sh 'pwd'
             echo 'Built Successfully'
