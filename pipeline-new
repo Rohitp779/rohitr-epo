@@ -11,6 +11,12 @@ pipeline {
             echo 'SCM-checkout Successfully'
             }
         }
+        stage('Built') {
+            steps { 
+            sh 'java -version'
+            echo 'SCM-checkout Successfully'
+            }
+        }
        
     }
 }
