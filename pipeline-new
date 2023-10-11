@@ -1,7 +1,7 @@
 pipeline {
     agent { node {label 'linux-rohit'}} 
     parameters {
-        string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
+        string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Hello Dnyneshwar Sir this is pipeline created my rohit patil?')
     }
     stages {
         stage('Build') {
@@ -9,15 +9,25 @@ pipeline {
             script {
             sh "rm -rf game-of-life"
             sh "git clone https://github.com/Dee601/game-of-life game-of-life"
-            dir("game-of-life") {
+            dir("game-of-life")
+            }
+                echo 'Build Successfully'
+            }
+        }                    
+        stage('Test') {
+            steps {
+            script {
             sh 'mvn clean install'
-            dir('gameoflife-web/target/') {
+            dir('gameoflife-web/target/')
+            }
+            echo 'Test Successfully'
+            }
+        }
+        stage('Deploy') {
+            steps {
             sh 'cp gameoflife.war /mnt/'
+            echo 'Deploy war file in mnt folder... Successfully afterwords it will be copied to apache tomcat / webapps/ folder'
+            }
             }
          }
       }
-    echo 'Build Successfully'
-    }
-   }    
-  }
-}
