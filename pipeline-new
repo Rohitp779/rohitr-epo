@@ -11,12 +11,6 @@ pipeline {
             echo 'SCM-checkout Successfully'
             }
         }
-        stage('Build') {
-            steps {
-            dir('/home/ec2-user/workspace/pipeline-new/game-of-life')
-            sh 'mvn clean install'
-            echo 'Build Successfully'
-            }
-        }
+       
     }
 }
