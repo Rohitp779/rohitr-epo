@@ -1,24 +1,23 @@
 pipeline {
-    agent { label 'linux-rohit' }
+    agent { node {label 'linux-rohit'}} 
     parameters {
         string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
     }
     stages {
         stage('Build') {
             steps {
-                script {
-                    def projectDir = 'game-of-life'
-                    sh "rm -rf ${projectDir}"
-                    sh "git clone https://github.com/Dee601/game-of-life ${projectDir}"
-                    dir("${projectDir}") {
-                        sh 'mvn clean install'
-                        dir('gameoflife-web/target/') {
-                            sh 'cp gameoflife.war /mnt/'
-                        }
-                    }
-                }
-                echo 'Build Successfully'
+            script {
+            sh "rm -rf game-of-life"
+            sh "git clone https://github.com/Dee601/game-of-life game-of-life"
+            dir("game-of-life") {
+            sh 'mvn clean install'
+            dir('gameoflife-web/target/') {
+            sh 'cp gameoflife.war /mnt/'
             }
-        }
+         }
+      }
+    echo 'Build Successfully'
     }
+   }    
+  }
 }
