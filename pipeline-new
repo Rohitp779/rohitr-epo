@@ -16,7 +16,6 @@ pipeline {
         stage('Build') {
             steps {
             script {
-            sh "cd /home/ec2-user/workspace/pipeline-new/game-of-life"
             sh "mvn clean install"
             echo 'Build Successfully'
             }
