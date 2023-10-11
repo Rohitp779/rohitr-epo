@@ -4,14 +4,18 @@ pipeline {
                     string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
     }
     stages {
-        stage('Hello') {
-            steps {
-                echo 'Hello World'
-            }
-        }
         stage('Build') {
             steps {
+                sh '
+                mvn clean install
+                cd gameoflife-web/target/
+                cp gameoflife.war /mnt/apache-tomcat-9.0.80/webapps/ '        
                 echo 'Build Successfully'
+            }
+        }
+        stage('test') {
+            steps {
+                echo 'xxxx'
             }
         }
     }
