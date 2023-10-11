@@ -14,7 +14,15 @@ pipeline {
         stage('Built') {
             steps { 
             sh 'java -version'
-            echo 'SCM-checkout Successfully'
+            sh 'cd .'
+            echo 'Built Successfully'
+            }
+        }
+        stage('Test') {
+            steps { 
+            sh 'mvn -version'
+            sh 'cd .'
+            echo 'Test Successfully'
             }
         }
        
