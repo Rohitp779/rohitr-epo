@@ -11,6 +11,14 @@ pipeline {
         }
         stage('Build') {
             steps {
+                sh 'java -version'
+                echo 'Build Successfully'
+            }
+        }
+        stage('Deploy') {
+            steps {
+                sh 'mvn -version'
+                sh 'cd .'
                 echo 'Build Successfully'
             }
         }
