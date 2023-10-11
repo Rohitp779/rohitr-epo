@@ -1,5 +1,5 @@
 pipeline {
-    agent { node { label 'linux-rohit' } }
+    agent { node { label 'built-in' } }
     parameters {
                     string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
     }
