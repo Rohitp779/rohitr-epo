@@ -7,6 +7,7 @@ pipeline {
         stage('Build') {
             steps {
                 sh '''
+                    rm -rf game-of-life
                     git clone https://github.com/Dee601/game-of-life
                     cd game-of-life/
                     mvn clean install
