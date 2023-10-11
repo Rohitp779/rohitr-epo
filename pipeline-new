@@ -15,14 +15,14 @@ pipeline {
         stage('Built') {
             steps { 
             sh 'cd /home/ec2-user/workspace/pipeline-new/game-of-life'
-            sh 'cd .'
+            sh 'pwd'
             echo 'Built Successfully'
             }
         }
         stage('Test') {
             steps { 
-            sh 'mvn -version'
             sh 'pwd'
+            sh 'mnv -version'
             echo 'Test Successfully'
             }
         }
