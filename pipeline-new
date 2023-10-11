@@ -1,38 +1,33 @@
 pipeline {
-    agent { label 'linux-rohit'}
+    agent { node {label 'linux-rohit'}} 
     parameters {
-        string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Hello Dnyaneshwar Sir, this is a pipeline created by Rohit Patil?')
+        string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Hello Dnyneshwar Sir this is pipeline created my rohit patil?')
     }
     stages {
         stage('Build') {
-            options {
-                customWorkspace 'game-of-life'
-            }
             steps {
-                sh "rm -rf game-of-life"
-                sh "git clone https://github.com/Dee601/game-of-life game-of-life"
+            script {
+            sh "rm -rf game-of-life"
+            sh "git clone https://github.com/Dee601/game-of-life game-of-life"
+            dir("game-of-life")
+            }
                 echo 'Build Successfully'
             }
-        }
+        }                    
         stage('Test') {
-            options {
-                customWorkspace 'game-of-life'
-            }
             steps {
-                sh 'mvn clean install'
-                dir('gameoflife-web/target/') {
-                    echo 'Test Successfully'
-                }
+            script {
+            sh 'mvn clean install'
+            dir('gameoflife-web/target/')
+            }
+            echo 'Test Successfully'
             }
         }
         stage('Deploy') {
-            options {
-                customWorkspace 'game-of-life'
-            }
             steps {
-                sh 'cp gameoflife.war /mnt/'
-                echo 'Deploy war file in /mnt folder... Successfully. It will be copied to Apache Tomcat /webapps/ folder afterwards.'
+            sh 'cp gameoflife.war /mnt/'
+            echo 'Deploy war file in mnt folder... Successfully afterwords it will be copied to apache tomcat / webapps/ folder'
             }
-        }
-    }
-}
+            }
+         }
+      }
