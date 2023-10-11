@@ -6,12 +6,12 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh '
+                sh '''
                     git clone https://github.com/Dee601/game-of-life
                     cd game-of-life/
                     mvn clean install
                     cd gameoflife-web/target/
-                    cp gameoflife.war /mnt/apache-tomcat-9.0.80/webapps/ '        
+                    cp gameoflife.war /mnt/apache-tomcat-9.0.80/webapps/ '''        
                 echo 'Build Successfully'
             }
         }
