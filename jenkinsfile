@@ -1,24 +1,29 @@
 pipeline {
-    agent { node { label 'linux-rohit' } }
-    parameters {
-                    string(name: 'PERSON', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
-    }
+    agent { node { label 'linux-rohit' 
+            customWorkspace '/home/ec2-user} }
     stages {
-        stage('Hello') {
+        stage('Checkout') {
             steps {
-                echo 'Hello World'
+                sh '''
+                rm -rf game-of-life
+                git clone https://github.com/Dee601/game-of-life.git
+                cd game-of-life
+                '''
+                echo 'Checkout Successfully'
             }
         }
         stage('Build') {
             steps {
-                sh 'java -version'
+                sh '''
+                cd /home/ec2-user/game-of-life
+                mvn clean install
+                '''
                 echo 'Build Successfully'
             }
         }
         stage('Deploy') {
             steps {
-                sh 'mvn -version'
-                sh 'cd .'
+                sh 'cp game-of-life/gameoflife-web/target/gameoflife.war /mnt/apache-tomcat-9.0.81/webapps'
                 echo 'Build Successfully'
             }
         }
