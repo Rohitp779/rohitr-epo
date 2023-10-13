@@ -1,6 +1,7 @@
 pipeline {
-    agent { node { label 'linux-rohit' 
-            customWorkspace '/home/ec2-user} }
+    agent { node { label 'linux-rohit'
+    customWorkspace '/home/ec2-user' }
+    }
     stages {
         stage('Checkout') {
             steps {
